@@ -1,0 +1,19 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/ 
+      
+server:
+  port: 80
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+  ##定义转发服务规则，可自定义名称
+    ribbon:
+      path: /api-member/**
+      serviceId: member-provider
+    feign:
+      path: /api-order/**
+      serviceId: order-consumer

@@ -1,0 +1,32 @@
+##会员服务端口
+server:
+  port: 9001
+  
+spring:
+  application:
+    name: member-provider
+  profiles: member1
+  
+eureka:
+  instance:
+    hostname: member1
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/ 
+
+---
+
+server:
+  port: 9002
+  
+spring:
+  application:
+    name: member-provider
+  profiles: member2
+  
+eureka:
+  instance:
+    hostname: member2
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/ 
